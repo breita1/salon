@@ -1,0 +1,24 @@
+<div class="mainCont">
+<div class="booking">
+<h1>New Schedule</h1>
+
+<h1>Choose the date and time</h1>
+<div class="mainCont">
+<%= SimpleCalendar::MonthCalendar.new(self, number_of_days: 7, time_range: 24 ).render do |day| %>
+<%= day %>
+<% end %>
+<br>
+<br>
+<%= render 'form', schedule: @schedule %>
+
+
+
+<a href="/schedule/new" class="button">Confirm</a></p> 
+
+
+
+
+<%= link_to 'Back', cart_path %>
+
+
+  

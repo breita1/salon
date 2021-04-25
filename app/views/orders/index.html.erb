@@ -1,0 +1,32 @@
+<div class="mainCont">
+<p id="notice"><%= notice %></p>
+
+
+
+<table>
+  <thead>
+   <h1>Order Details</h1>
+<table id="customers">
+ <tr>
+ <td>Order date:</td>
+ <td>Treatment:</td>
+ <td>Booking ID</td>
+ </tr>
+
+ </table>
+
+<table id="customers">
+ <% @orderitems.each do |orderitem| %>
+ <tr>
+ <td><%= orderitem.created_at %></td>
+
+ <td><%= orderitem.title %></td>
+ <td><%= orderitem.order_id %></td>
+
+ </tr>
+ <% end %>
+ <tr></tr>
+ </table>
+
+ </div>
+

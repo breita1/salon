@@ -1,0 +1,70 @@
+<div class="booking">
+<h1>Choose the date and time</h1>
+
+<%= SimpleCalendar::WeekCalendar.new(self, number_of_days: 7, time_range: 24 ).render do |day| %>
+<%= day %>
+
+
+<%= link_to "BookHERE", new_schedule_path %>
+
+<%= link_to "BookNOW", new_booking_path %>
+<%= link_to "Times" %>
+<% end %>
+
+<%= link_to "ORDERS", orders_path %>
+
+
+
+<hr />
+<h1> Month </h1>
+<% start_date = params.fetch(:start_date, Date.today).to_date %>
+<% date_range = (start_date.beginning_of_week..start_date.end_of_week).to_a %>
+
+
+<% start_time = params.fetch(:start_time, Date.today).to_date %>
+<% time_range = (start_date.beginning_of_day..start_date.end_of_day)%>
+
+
+
+
+
+<%= link_to "Previous", start_date: date_range.first - 1.day %>
+<%= I18n.t("date.month_names")[start_date.month] %> <%= start_date.year %>
+<%= link_to "Next", start_date: date_range.last + 1.day %>
+
+
+
+
+
+
+<table class="table schedule">
+  <thead>
+    <tr>
+      
+      <th>Monday</th>
+      <th>Tueday</th>
+      <th>Wednesday</th>
+      <th>Thursday</th>
+      <th>Friday</th>
+      <th>Saturday</th>
+      <th>Sunday</th>
+    </tr>
+  </thead>
+  
+  
+  <tbody>
+    <% date_range.each_slice(7) do |week| %>
+    <% time_range = (start_date.beginning_of_day..start_date.end_of_day)%>
+
+    <tr>
+      <% week.each do |day| %>
+      <td>
+        <%= day %>
+       
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Booking', new_booking_path %>

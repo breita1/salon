@@ -1,0 +1,20 @@
+<div id="itemsContainer">
+   
+   <h1><%= @item.title %></h1>
+   
+  
+       <h2><%= @item.description %></h1>
+   
+    <div class="itemhols">
+       <p>Price <%= number_to_currency(@item.price, :unit => "€") %>
+
+       
+       <p>
+         <a href="/cart/<%= @item.id %>" class="button">Add To Cart</a>
+         <%= link_to 'Back to Treatments',  items_path, :class => "button", :role => "button" %>
+         
+       </p>
+        
+      </div>
+   
+  </div>
